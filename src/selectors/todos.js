@@ -1,7 +1,10 @@
+import moment from 'moment'
+
 const getVisibleTodos = (todos, { text, sortBy, startDate, endDate }) => {
     return todos.filter((todo) => {
-        const startDateMatch = typeof startDate !== 'number' || todo.createdAt >= startDate
-        const endDateMatch = typeof endDate !== 'number' || todo.createdAt <= endDate
+        const createdAtMoment = moment(todo.createdAt)
+        const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true
+        const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true
         const textMatch = (todo.title).toLowerCase().includes(text.toLowerCase())
 
         return startDateMatch && endDateMatch && textMatch
