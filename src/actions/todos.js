@@ -1,7 +1,7 @@
 import uuid from 'uuid'
 
 // ADD_TODO
-export const addTodo = ({title = '', details = '', priority = '', createdAt = 0}) => ({
+export const addTodo = ({title = '', details = '', priority = 1, createdAt = 0}) => ({
     type: 'ADD_TODO',
     todo: {
         id: uuid(),
