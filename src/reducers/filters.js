@@ -15,10 +15,14 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
                 text: action.text
             }
             case 'SORT_BY_DATE':
+                return {
+                    ...state,
+                    sortBy: 'date'
+                }
             case 'SORT_BY_PRIORITY':
                 return {
                     ...state,
-                    sortBy: action.sortBy
+                    sortBy: 'priority'
                 }
             case 'SET_START_DATE':
                 return {
