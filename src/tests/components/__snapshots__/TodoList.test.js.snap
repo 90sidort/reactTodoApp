@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should correctly render TodoList component with todos 1`] = `
+<div>
+  <h1>
+    Todo List
+  </h1>
+  <TodoListItem
+    createdAt={259200000}
+    details="These are first details"
+    id="1"
+    key="1"
+    priority={0}
+    title="First todo"
+  />
+  <TodoListItem
+    createdAt={-259200000}
+    details="These are second details"
+    id="2"
+    key="2"
+    priority={2}
+    title="Second todo"
+  />
+  <TodoListItem
+    createdAt={432000000}
+    details="These are third details"
+    id="3"
+    key="3"
+    priority={1}
+    title="Third"
+  />
+</div>
+`;
+
+exports[`Should correctly render TodoList component with todos 2`] = `
+<div>
+  <h1>
+    Todo List
+  </h1>
+  <p>
+    No todos to be done
+  </p>
+</div>
+`;

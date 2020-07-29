@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should correctly render TodoListItemComponent 1`] = `
+<div>
+  <Link
+    replace={false}
+    to="edit/1"
+  >
+    <h3>
+      Description:
+      First todo
+    </h3>
+  </Link>
+  <p>
+    Details:
+    These are first details
+  </p>
+  <p>
+    Priority: 
+    0
+  </p>
+  <p>
+    Creation Time:
+    259200000
+  </p>
+</div>
+`;
