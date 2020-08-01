@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should correctly render EditTodoPage 1`] = `
+<div>
+  <TodoForm
+    onSubmit={[Function]}
+    todo={
+      Object {
+        "createdAt": 259200000,
+        "details": "These are first details",
+        "id": "1",
+        "priority": 0,
+        "title": "First todo",
+      }
+    }
+  />
+  <button
+    onClick={[Function]}
+  >
+    Remove
+  </button>
+</div>
+`;

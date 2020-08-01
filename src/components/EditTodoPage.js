@@ -3,23 +3,30 @@ import { connect } from 'react-redux'
 import TodoForm from './TodoForm'
 import { editTodo, removeTodo } from '../actions/todos'
 
-const EditTodoPage = (props) => {
-    console.log(props.todo)
-    return(
-        <div>
-            <TodoForm 
-                todo={props.todo}
-                onSubmit={(todo) => {
-                    props.dispatch(editTodo(props.todo.id, todo))
-                    props.history.push('/')
-                }}
-            />
-            <button onClick={() => {
-                props.dispatch(removeTodo({id: props.todo.id}))
-                props.history.push('/')
-            }}>Remove</button>
-        </div>
-    )
+export class EditTodoPage extends React.Component {
+    onSubmit = (todo) => {
+        this.props.editTodo(this.props.todo.id, todo)
+        this.props.history.push('/')
+    }
+    onRemove = () => {
+        this.props.removeTodo({id: this.props.todo.id})
+        this.props.history.push('/')
+    }
+    render() {
+        return (
+            <div>
+                <TodoForm 
+                    todo={this.props.todo}
+                    onSubmit={this.onSubmit}
+                />
+                <button
+                    onClick={this.onRemove}
+                >
+                    Remove
+                </button>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state, props) => {
@@ -28,4 +35,9 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-export default connect(mapStateToProps)(EditTodoPage)
+const mapDispatchToProps = (dispatch) => ({
+    editTodo: (id, todo) => dispatch(editTodo(id, todo)),
+    removeTodo: (data) => dispatch(removeTodo(data))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditTodoPage)
