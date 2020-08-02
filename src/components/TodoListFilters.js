@@ -3,49 +3,56 @@ import { connect } from 'react-redux'
 import { setTextFilter, sortByPriority, sortByDate, setStartDate, setEndDate } from '../actions/filters'
 import { DateRangePicker } from 'react-dates'
 
-class TodoListFilters extends React.Component {
+export class TodoListFilters extends React.Component {
     state = {
         calendarFocused: null
     }
     onDatesChange = ({ startDate, endDate }) => {
-        this.props.dispatch(setStartDate(startDate))
-        this.props.dispatch(setEndDate(endDate))
+        this.props.setStartDate(startDate)
+        this.props.setEndDate(endDate)
     }
     onFocusChange = (calendarFocused) => {
         this.setState(() => ({ calendarFocused }))
     }
+    onSortChange = (e) => {
+        if (e.target.value === 'date'){this.props.sortByDate()}
+        else {this.props.sortByPriority()}
+    }
+    onTextChange = (e) => {
+        this.props.setTextFilter(e.target.value)
+    }
     render() {
         return (
             <div>
-            <input type="text" value={this.props.filters.text} onChange={(e) => {
-                props.dispatch(setTextFilter(e.target.value))
-            }} />
-            <select value={this.props.filters.sortBy} onChange={(e) => {
-                if (e.target.value === 'date'){this.props.dispatch(sortByDate())}
-                else {this.props.dispatch(sortByPriority())}
-            }}>
-                <option value="date">Date</option>
-                <option value="priority">Priority</option>
-            </select>
-            <DateRangePicker
-                startDate={this.props.filters.startDate}
-                endDate={this.props.filters.endDate}
-                onDatesChange={this.onDatesChange}
-                focusedInput={this.state.calendarFocused}
-                onFocusChange={this.onFocusChange}
-                numberOfMonths={1}
-                isOutsideRange={() => false}
-                showClearDates={true}
-            />
-        </div>
+                <input type="text" value={this.props.filters.text} onChange={this.onTextChange} />
+                <select value={this.props.filters.sortBy} onChange={this.onSortChange}>
+                    <option value="date">Date</option>
+                    <option value="priority">Priority</option>
+                </select>
+                <DateRangePicker
+                    startDate={this.props.filters.startDate}
+                    endDate={this.props.filters.endDate}
+                    onDatesChange={this.onDatesChange}
+                    focusedInput={this.state.calendarFocused}
+                    onFocusChange={this.onFocusChange}
+                    numberOfMonths={1}
+                    isOutsideRange={() => false}
+                    showClearDates={true}
+                />
+            </div>
         )
     }
 }
 
-const stateMapToProps = (state) => {
-    return {
-        filters: state.filters
-    }
-}
+const stateMapToProps = (state) => ({filters: state.filters})
 
-export default connect(stateMapToProps)(TodoListFilters)
+
+const mapDispatchToProps = (dispatch) => ({
+    setStartDate: (startDate) => dispatch(setStartDate(startDate)),
+    setEndDate: (endDate) => dispatch(setEndDate(endDate)),
+    setTextFilter: (text) => dispatch(setTextFilter(text)),
+    sortByDate: () => dispatch(sortByDate()),
+    sortByPriority: () => dispatch(sortByPriority())
+})
+
+export default connect(stateMapToProps, mapDispatchToProps)(TodoListFilters)
