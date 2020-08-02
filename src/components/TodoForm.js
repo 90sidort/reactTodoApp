@@ -40,7 +40,7 @@ class TodoForm extends React.Component {
             this.setState({ error: ''})
             this.props.onSubmit({
                 title: this.state.title,
-                priority: this.state.priority,
+                priority: parseInt(this.state.priority),
                 createdAt: this.state.createdAt.valueOf(),
                 details: this.state.details
             })

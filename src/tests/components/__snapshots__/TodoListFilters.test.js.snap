@@ -22,6 +22,30 @@ exports[`Should render component correctly with altered filters 1`] = `
       Priority
     </option>
   </select>
+  <select
+    onChange={[Function]}
+  >
+    <option
+      value={-1}
+    >
+      All
+    </option>
+    <option
+      value={0}
+    >
+      Low
+    </option>
+    <option
+      value={1}
+    >
+      Normal
+    </option>
+    <option
+      value={2}
+    >
+      High
+    </option>
+  </select>
   <DateRangePicker
     anchorDirection="left"
     customArrowIcon={null}
@@ -128,6 +152,30 @@ exports[`Should render component correctly with default filters 1`] = `
       value="priority"
     >
       Priority
+    </option>
+  </select>
+  <select
+    onChange={[Function]}
+  >
+    <option
+      value={-1}
+    >
+      All
+    </option>
+    <option
+      value={0}
+    >
+      Low
+    </option>
+    <option
+      value={1}
+    >
+      Normal
+    </option>
+    <option
+      value={2}
+    >
+      High
     </option>
   </select>
   <DateRangePicker

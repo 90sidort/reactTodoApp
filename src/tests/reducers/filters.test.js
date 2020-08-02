@@ -5,6 +5,7 @@ test('Should setup default filter values', () => {
     const state = filtersReducer(undefined, { type: '@@INIT'})
     expect(state).toEqual({
         text: '',
+        priorityValue: -1,
         sortBy: 'date',
         startDate: moment().startOf('month'),
         endDate: moment().endOf('month')
@@ -19,6 +20,7 @@ test('Should set sortBy to amount', () => {
 test('Should set sortBy to date', () => {
     const previousState = {
         text: '',
+        priorityValue: -1,
         sortBy: 'amount',
         startDate: moment().startOf('month'),
         endDate: moment().endOf('month')
@@ -32,15 +34,33 @@ test('Should set text filter to specific string', () => {
     expect(state.text).toBe('test')
 })
 
+test('Should set priority filter to specific value', () => {
+    const state = filtersReducer(undefined, {type: 'SET_PRIORITY_FILTER', priorityValue: 0})
+    expect(state.priorityValue).toBe(0)
+})
+
 test('Should set text filter to empty string', () => {
     const previousState = {
         text: 'test',
+        priorityValue: -1,
         sortBy: 'amount',
         startDate: moment().startOf('month'),
         endDate: moment().endOf('month')
     }
     const state = filtersReducer(previousState, {type: 'SET_TEXT_FILTER', text:''})
     expect(state.text).toBe('')
+})
+
+test('Should set priority filter to 2', () => {
+    const previousState = {
+        text: 'test',
+        priorityValue: 1,
+        sortBy: 'amount',
+        startDate: moment().startOf('month'),
+        endDate: moment().endOf('month')
+    }
+    const state = filtersReducer(previousState, {type: 'SET_PRIORITY_FILTER', priorityValue: 2})
+    expect(state.priorityValue).toBe(2)
 })
 
 test('Should set start date to a specific date', () => {

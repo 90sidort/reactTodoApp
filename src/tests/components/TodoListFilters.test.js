@@ -3,16 +3,18 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { filtersAlt, filtersDefault } from '../fixtures/filtersFixture'
 
-let setTextFilter, sortByPriority, sortByDate, setStartDate, setEndDate, wrapper
+let setTextFilter, setPriorityFilter, sortByPriority, sortByDate, setStartDate, setEndDate, wrapper
 
 beforeEach(() => {
     setTextFilter = jest.fn()
+    setPriorityFilter = jest.fn()
     sortByPriority = jest.fn()
     sortByDate = jest.fn()
     setStartDate = jest.fn()
     setEndDate = jest.fn()
     wrapper = shallow(<TodoListFilters
         setTextFilter={setTextFilter}
+        setPriorityFilter={setPriorityFilter}
         sortByPriority={sortByPriority}
         sortByDate={sortByDate}
         setStartDate={setStartDate}
@@ -35,6 +37,11 @@ test('Should render component correctly with altered filters', () => {
 test('Should correctly handle text filter', () => {
     wrapper.find('input').at(0).simulate('change', { target: { value: 'test' }})
     expect(setTextFilter).toHaveBeenLastCalledWith('test')
+})
+
+test('Should handle priority filter', () => {
+    wrapper.find('select').at(1).simulate('change', { target: { value: 2 }})
+    expect(setPriorityFilter).toHaveBeenLastCalledWith(2)
 })
 
 test('Should correctly handle sort by priority', () => {

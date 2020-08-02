@@ -1,4 +1,4 @@
-import { setStartDate, setTextFilter, sortByDate, sortByPriority, setEndDate } from '../../actions/filters'
+import { setStartDate, setPriorityFilter, setTextFilter, sortByDate, sortByPriority, setEndDate } from '../../actions/filters'
 import moment from 'moment'
 
 test('Should correctly generate set text object with valid string', () => {
@@ -6,6 +6,22 @@ test('Should correctly generate set text object with valid string', () => {
     expect(result).toEqual({
         type: 'SET_TEXT_FILTER',
         text: 'note'
+    })
+})
+
+test('Should correctly generate set priority object with valid value', () => {
+    const result = setPriorityFilter(1)
+    expect(result).toEqual({
+        type: 'SET_PRIORITY_FILTER',
+        priorityValue: 1
+    })
+})
+
+test('Should correctly generate set priority object with no value', () => {
+    const result = setPriorityFilter()
+    expect(result).toEqual({
+        type: 'SET_PRIORITY_FILTER',
+        priorityValue: -1
     })
 })
 

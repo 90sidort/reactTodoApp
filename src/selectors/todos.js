@@ -1,13 +1,14 @@
 import moment from 'moment'
 
-const getVisibleTodos = (todos, { text, sortBy, startDate, endDate }) => {
+const getVisibleTodos = (todos, { text, priorityValue, sortBy, startDate, endDate }) => {
     return todos.filter((todo) => {
         const createdAtMoment = moment(todo.createdAt)
         const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true
         const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true
         const textMatch = (todo.title).toLowerCase().includes(text.toLowerCase())
+        const priorityMatch = ((todo.priority) === priorityValue) || (priorityValue === -1)
 
-        return startDateMatch && endDateMatch && textMatch
+        return startDateMatch && endDateMatch && textMatch && priorityMatch
     }).sort((a, b) => {
         if (sortBy === 'date') {
             return a.createdAt < b.createdAt ? 1 : -1

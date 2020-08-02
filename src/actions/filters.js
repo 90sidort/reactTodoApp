@@ -1,7 +1,13 @@
 // SET_TEXT_FILTER
-export const setTextFilter = (text) => ({
+export const setTextFilter = (text = '') => ({
     type: 'SET_TEXT_FILTER',
     text
+})
+
+// SET_PRIORITY_FILTER
+export const setPriorityFilter = (priorityValue = -1) => ({
+    type: 'SET_PRIORITY_FILTER',
+    priorityValue
 })
 
 // SORT_BY_DATE
