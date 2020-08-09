@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render component correctly with multiple todos 1`] = `
+<div>
+  <p>
+    Viewing 
+    3
+     
+    todos
+    .
+  </p>
+  <p>
+    1
+     low, 
+    1
+     regular and 
+    1
+     high priotity
+  </p>
+</div>
+`;
+
+exports[`Should render component correctly with no todos 1`] = `
+<div>
+  <p>
+    Viewing 
+    0
+     
+    todos
+    .
+  </p>
+  <p>
+    0
+     low, 
+    0
+     regular and 
+    0
+     high priotity
+  </p>
+</div>
+`;
+
+exports[`Should render component correctly with one todo 1`] = `
+<div>
+  <p>
+    Viewing 
+    1
+     
+    todo
+    .
+  </p>
+  <p>
+    1
+     low, 
+    0
+     regular and 
+    0
+     high priotity
+  </p>
+</div>
+`;
