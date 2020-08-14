@@ -1,11 +1,11 @@
 import React from 'react'
 import TodoForm from './TodoForm'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions/todos'
+import { startAddTodo } from '../actions/todos'
 
 export class CreateTodoPage extends React.Component {
     onSubmit = (todo) => {
-        this.props.addTodo(todo)
+        this.props.startAddTodo(todo)
         this.props.history.push('/')
     }
     render() {
@@ -19,7 +19,7 @@ export class CreateTodoPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addTodo: (todo) => dispatch(addTodo(todo))
+    startAddTodo: (todo) => dispatch(startAddTodo(todo))
 })
 
 export default connect(undefined, mapDispatchToProps)(CreateTodoPage)

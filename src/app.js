@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import AppRouter from './components/routers/AppRouter'
 import configureStore from './store/configureStore'
+import './firebase/firebase'
 // import getVisibleTodos from './selectors/todos'
 // import { setTextFilter, setPriorityFilter ,sortByDate, sortByPriority, setStartDate, setEndDate } from './actions/filters'
 // import { addTodo, editTodo, removeTodo } from './actions/todos'
