@@ -3,12 +3,12 @@ import { shallow } from 'enzyme'
 import todoMocks from '../fixtures/todosFixture'
 import { CreateTodoPage } from '../../components/CreateTodoPage'
 
-let history, wrapper, addTodo
+let history, wrapper, startAddTodo
 
 beforeEach(() => {
     history = { push: jest.fn()}
-    addTodo = jest.fn()
-    wrapper = shallow(<CreateTodoPage history={history} addTodo={addTodo} />)
+    startAddTodo = jest.fn()
+    wrapper = shallow(<CreateTodoPage history={history} startAddTodo={startAddTodo} />)
 })
 
 test('Should correctly render CreateTodoComponent', () => {
@@ -18,5 +18,5 @@ test('Should correctly render CreateTodoComponent', () => {
 test('Should handle addTodo correctly', () => {
     wrapper.find('TodoForm').prop('onSubmit')(todoMocks[1])
     expect(history.push).toHaveBeenLastCalledWith('/')
-    expect(addTodo).toHaveBeenLastCalledWith(todoMocks[1])
+    expect(startAddTodo).toHaveBeenLastCalledWith(todoMocks[1])
 })

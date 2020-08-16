@@ -1,13 +1,13 @@
 import * as firebase from 'firebase'
 
 const config = {
-  apiKey: "AIzaSyAYfzcirZ1lWlhzGsbpE50HNyG84XcvmAg",
-  authDomain: "todos-ts.firebaseapp.com",
-  databaseURL: "https://todos-ts.firebaseio.com",
-  projectId: "todos-ts",
-  storageBucket: "todos-ts.appspot.com",
-  messagingSenderId: "576358977636",
-  appId: "1:576358977636:web:33a62ac7e6fb8facea4f71"
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID
 };
 
 firebase.initializeApp(config)
