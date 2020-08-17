@@ -1,10 +1,22 @@
-import { addTodo, editTodo, removeTodo, startAddTodo } from '../../actions/todos'
+import { addTodo, editTodo, removeTodo, startAddTodo, startEditTodo, startRemoveTodo, startSetTodos } from '../../actions/todos'
 import mockedTodos from '../fixtures/todosFixture'
 import configurMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import database from '../../firebase/firebase'
 
 const createMockStore = configurMockStore([thunk])
+
+beforeEach((done) => {
+    const todoData = {}
+    mockedTodos.forEach(({ id, title, details, priority, createdAt}) => {
+        todoData[id] = { title, details, priority, createdAt }
+    })
+    database.ref('todos').set(todoData).then(() => done())
+})
+
+afterEach((done) => {
+    database.ref('todos').set({}).then(() => done())
+})
 
 test('Should generete remove todo object correctly',() => {
     const result = removeTodo({ id: '12345'})
@@ -77,6 +89,45 @@ test('Should add todo with default data to database and store', (done) => {
         return database.ref(`todos/${actions[0].todo.id}`).once('value')
     }).then((snapshot) => {
         expect(snapshot.val()).toEqual(todoData)
+        done()
+    })
+})
+
+test('Should remove data from firebase', (done) => {
+    const store = createMockStore({})
+    store.dispatch(startRemoveTodo({ id: mockedTodos[1].id })).then(() => {
+        const actions = store.getActions()
+        expect(actions[0]).toEqual({
+            type: 'REMOVE_TODO',
+            id: mockedTodos[1].id
+        })
+        done()
+    })
+})
+
+test('Should edit data in firebase', (done) => {
+    const store = createMockStore({})
+    store.dispatch(startEditTodo(mockedTodos[1].id, {title: 'New title'})).then(() => {
+        const actions = store.getActions()
+        expect(actions[0]).toEqual({
+            type: 'EDIT_TODO',
+            id: mockedTodos[1].id,
+            updates: {
+                title: 'New title'
+            }
+        })
+        done()
+    })
+})
+
+test('Should fetch the todos from firebase', (done) => {
+    const store = createMockStore({})
+    store.dispatch(startSetTodos()).then(() => {
+        const actions = store.getActions()
+        expect(actions[0]).toEqual({
+            type: 'SET_TODOS',
+            todos: mockedTodos
+        })
         done()
     })
 })

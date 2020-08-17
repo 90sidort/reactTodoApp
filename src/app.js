@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import AppRouter from './components/routers/AppRouter'
 import configureStore from './store/configureStore'
 import './firebase/firebase'
+import { startSetTodos } from './actions/todos'
 // import getVisibleTodos from './selectors/todos'
 // import { setTextFilter, setPriorityFilter ,sortByDate, sortByPriority, setStartDate, setEndDate } from './actions/filters'
 // import { addTodo, editTodo, removeTodo } from './actions/todos'
@@ -13,6 +14,8 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css'
 
 const store = configureStore()
+
+store.dispatch(startSetTodos())
 
 // store.subscribe(() => {
 //     const state = store.getState()
@@ -32,4 +35,8 @@ const jsx = (
     </Provider>
 )
 
-ReactDOM.render(jsx, document.getElementById('app'));
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'))
+
+store.dispatch(startSetTodos()).then(() => {
+    ReactDOM.render(jsx, document.getElementById('app'))
+})

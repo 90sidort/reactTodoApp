@@ -30,3 +30,8 @@ test('Should correctly set todos array when initializing', () => {
     const result = todosReducers(undefined, { type: '@@INIT'})
     expect(result).toEqual([])
 })
+
+test('Should correctly set todos', () => {
+    const result = todosReducers(mockedTodos, {type: 'SET_TODOS', todos: mockedTodos[2]})
+    expect(result).toEqual(mockedTodos[2])
+})
