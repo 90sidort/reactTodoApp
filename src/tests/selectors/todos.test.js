@@ -79,3 +79,16 @@ test("Should be able to filter by end date", () => {
   const result = getVisibleTodos(todosMock, filters);
   expect(result).toEqual([todosMock[1]]);
 });
+
+test("Should be able to filter by completed", () => {
+  const filters = {
+    text: "",
+    completed: true,
+    priorityValue: -1,
+    sortBy: "date",
+    startDate: undefined,
+    endDate: undefined,
+  };
+  const result = getVisibleTodos(todosMock, filters);
+  expect(result).toEqual([todosMock[0]]);
+});

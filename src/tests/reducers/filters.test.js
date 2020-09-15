@@ -21,6 +21,7 @@ test("Should set sortBy to amount", () => {
 test("Should set sortBy to date", () => {
   const previousState = {
     text: "",
+    completed: "all",
     priorityValue: -1,
     sortBy: "amount",
     startDate: moment().startOf("month"),
@@ -44,6 +45,14 @@ test("Should set priority filter to specific value", () => {
     priorityValue: 0,
   });
   expect(state.priorityValue).toBe(0);
+});
+
+test("Should set priority filter to specific value", () => {
+  const state = filtersReducer(undefined, {
+    type: "SHOW_BY_STATUS",
+    completed: true,
+  });
+  expect(state.completed).toBe(true);
 });
 
 test("Should set text filter to empty string", () => {
