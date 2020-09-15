@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should correctly render TodoListItemComponent 1`] = `
-<div>
+<div
+  style={
+    Object {
+      "background": "#ffcccb",
+    }
+  }
+>
   <Link
     replace={false}
     to="edit/1"

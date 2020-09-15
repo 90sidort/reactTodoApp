@@ -6,6 +6,7 @@ exports[`Should correctly render EditTodoPage 1`] = `
     onSubmit={[Function]}
     todo={
       Object {
+        "completed": true,
         "createdAt": 259200000,
         "details": "These are first details",
         "id": "1",

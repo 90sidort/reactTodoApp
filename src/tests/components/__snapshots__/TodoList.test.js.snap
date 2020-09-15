@@ -6,6 +6,7 @@ exports[`Should correctly render TodoList component with todos 1`] = `
     Todo List
   </h1>
   <TodoListItem
+    completed={true}
     createdAt={259200000}
     details="These are first details"
     id="1"
@@ -14,6 +15,7 @@ exports[`Should correctly render TodoList component with todos 1`] = `
     title="First todo"
   />
   <TodoListItem
+    completed={false}
     createdAt={-259200000}
     details="These are second details"
     id="2"
@@ -22,6 +24,7 @@ exports[`Should correctly render TodoList component with todos 1`] = `
     title="Second todo"
   />
   <TodoListItem
+    completed={false}
     createdAt={432000000}
     details="These are third details"
     id="3"

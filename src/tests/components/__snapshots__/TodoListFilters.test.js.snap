@@ -46,6 +46,25 @@ exports[`Should render component correctly with altered filters 1`] = `
       High
     </option>
   </select>
+  <select
+    onChange={[Function]}
+  >
+    <option
+      value="all"
+    >
+      All
+    </option>
+    <option
+      value={true}
+    >
+      Completed
+    </option>
+    <option
+      value={false}
+    >
+      Pending
+    </option>
+  </select>
   <DateRangePicker
     anchorDirection="left"
     customArrowIcon={null}
@@ -176,6 +195,25 @@ exports[`Should render component correctly with default filters 1`] = `
       value={2}
     >
       High
+    </option>
+  </select>
+  <select
+    onChange={[Function]}
+  >
+    <option
+      value="all"
+    >
+      All
+    </option>
+    <option
+      value={true}
+    >
+      Completed
+    </option>
+    <option
+      value={false}
+    >
+      Pending
     </option>
   </select>
   <DateRangePicker
