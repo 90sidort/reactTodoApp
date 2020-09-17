@@ -29,5 +29,10 @@ exports[`Should correctly render TodoListItemComponent 1`] = `
     Creation Time:
     259200000
   </p>
+  <button
+    disabled={true}
+  >
+    Done
+  </button>
 </div>
 `;

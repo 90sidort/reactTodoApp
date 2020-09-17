@@ -18,6 +18,7 @@ const TodoListItem = ({
       <p>Details:{details}</p>
       <p>Priority: {priority}</p>
       <p>Creation Time:{createdAt}</p>
+      <button disabled={true}>{completed ? "Done" : "Pending"}</button>
     </div>
   );
 };
