@@ -12,6 +12,8 @@ import configurMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import database from "../../firebase/firebase";
 
+const uid = "testuserTodo";
+const defaultAuthState = { auth: { uid } };
 const createMockStore = configurMockStore([thunk]);
 
 beforeEach((done) => {
@@ -22,14 +24,14 @@ beforeEach((done) => {
     }
   );
   database
-    .ref("todos")
+    .ref(`users/${uid}/todos`)
     .set(todoData)
     .then(() => done());
 });
 
 afterEach((done) => {
   database
-    .ref("todos")
+    .ref(`users/${uid}/todos`)
     .set({})
     .then(() => done());
 });
@@ -62,7 +64,7 @@ test("Should correctly generate create todo object with data", () => {
 });
 
 test("Should add todo to database and store", (done) => {
-  const store = createMockStore({});
+  const store = createMockStore(defaultAuthState);
   const todoData = {
     title: "Test todo",
     completed: false,
@@ -81,7 +83,9 @@ test("Should add todo to database and store", (done) => {
           ...todoData,
         },
       });
-      return database.ref(`todos/${actions[0].todo.id}`).once("value");
+      return database
+        .ref(`users/${uid}/todos/${actions[0].todo.id}`)
+        .once("value");
     })
     .then((snapshot) => {
       expect(snapshot.val()).toEqual(todoData);
@@ -90,7 +94,7 @@ test("Should add todo to database and store", (done) => {
 });
 
 test("Should add todo with default data to database and store", (done) => {
-  const store = createMockStore({});
+  const store = createMockStore(defaultAuthState);
   const todoData = {
     title: "",
     completed: false,
@@ -109,7 +113,9 @@ test("Should add todo with default data to database and store", (done) => {
           ...todoData,
         },
       });
-      return database.ref(`todos/${actions[0].todo.id}`).once("value");
+      return database
+        .ref(`users/${uid}/todos/${actions[0].todo.id}`)
+        .once("value");
     })
     .then((snapshot) => {
       expect(snapshot.val()).toEqual(todoData);
@@ -118,7 +124,7 @@ test("Should add todo with default data to database and store", (done) => {
 });
 
 test("Should remove data from firebase", (done) => {
-  const store = createMockStore({});
+  const store = createMockStore(defaultAuthState);
   store.dispatch(startRemoveTodo({ id: mockedTodos[1].id })).then(() => {
     const actions = store.getActions();
     expect(actions[0]).toEqual({
@@ -130,7 +136,7 @@ test("Should remove data from firebase", (done) => {
 });
 
 test("Should edit data in firebase", (done) => {
-  const store = createMockStore({});
+  const store = createMockStore(defaultAuthState);
   store
     .dispatch(startEditTodo(mockedTodos[1].id, { title: "New title" }))
     .then(() => {
@@ -147,7 +153,7 @@ test("Should edit data in firebase", (done) => {
 });
 
 test("Should fetch the todos from firebase", (done) => {
-  const store = createMockStore({});
+  const store = createMockStore(defaultAuthState);
   store.dispatch(startSetTodos()).then(() => {
     const actions = store.getActions();
     expect(actions[0]).toEqual({

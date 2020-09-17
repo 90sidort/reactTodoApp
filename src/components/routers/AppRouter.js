@@ -6,21 +6,21 @@ import CreateTodoPage from "../CreateTodoPage";
 import EditTodoPage from "../EditTodoPage";
 import HelpTodoPage from "../HelpTodoPage";
 import LoginPage from "../LoginPage";
-import Header from "../Header";
 import NotFoundPage from "../404";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 export const history = createHistory();
 
 const AppRouter = () => (
   <Router history={history}>
     <div>
-      <Header />
       <Switch>
-        <Route path="/" component={LoginPage} exact={true} />
-        <Route path="/dashboard" component={TodoDashboardPage} />
-        <Route path="/create" component={CreateTodoPage} />
-        <Route path="/edit/:id" component={EditTodoPage} />
-        <Route path="/help" component={HelpTodoPage} />
+        <PublicRoute path="/" component={LoginPage} exact={true} />
+        <PrivateRoute path="/dashboard" component={TodoDashboardPage} />
+        <PrivateRoute path="/create" component={CreateTodoPage} />
+        <PrivateRoute path="/edit/:id" component={EditTodoPage} />
+        <PrivateRoute path="/help" component={HelpTodoPage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

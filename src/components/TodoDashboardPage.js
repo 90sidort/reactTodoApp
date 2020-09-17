@@ -5,7 +5,6 @@ import TodosSummary from "../components/TodosSummary";
 
 const TodoDashboardPage = () => (
   <div>
-    This is my TodoDashboardPage.
     <TodosSummary />
     <TodoListFilters />
     <ConnectedTodoList />

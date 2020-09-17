@@ -2,7 +2,6 @@
 
 exports[`Should correctly render TodoDashboardPage component 1`] = `
 <div>
-  This is my TodoDashboardPage.
   <Connect(TodosSummary) />
   <Connect(TodoListFilters) />
   <Connect(TodoList) />

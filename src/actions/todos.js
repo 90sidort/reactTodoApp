@@ -7,7 +7,8 @@ export const addTodo = (todo) => ({
 });
 
 export const startAddTodo = (todoData = {}) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     const {
       title = "",
       details = "",
@@ -17,7 +18,7 @@ export const startAddTodo = (todoData = {}) => {
     } = todoData;
     const todo = { title, details, priority, completed, createdAt };
     return database
-      .ref("todos")
+      .ref(`users/${uid}/todos`)
       .push(todo)
       .then((ref) => {
         dispatch(
@@ -37,9 +38,10 @@ export const removeTodo = ({ id } = {}) => ({
 });
 
 export const startRemoveTodo = ({ id }) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     return database
-      .ref(`todos/${id}`)
+      .ref(`users/${uid}/todos/${id}`)
       .remove()
       .then(() => {
         dispatch(removeTodo({ id }));
@@ -55,9 +57,10 @@ export const editTodo = (id, updates) => ({
 });
 
 export const startEditTodo = (id, updates) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     return database
-      .ref(`todos/${id}`)
+      .ref(`users/${uid}todos/${id}`)
       .update(updates)
       .then(() => {
         dispatch(editTodo(id, updates));
@@ -71,9 +74,10 @@ export const setTodos = (todos) => ({
 });
 
 export const startSetTodos = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     return database
-      .ref(`todos`)
+      .ref(`users/${uid}/todos`)
       .once("value")
       .then((snapshot) => {
         const todos = [];
