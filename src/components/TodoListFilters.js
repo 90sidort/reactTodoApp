@@ -45,42 +45,68 @@ export class TodoListFilters extends React.Component {
   render() {
     return (
       <div>
-        <input
-          type="text"
-          value={this.props.filters.text}
-          onChange={this.onTextChange}
-        />
-        <select value={this.props.filters.sortBy} onChange={this.onSortChange}>
-          <option value="date">Date</option>
-          <option value="priority">Priority</option>
-        </select>
-        <select
-          value={this.props.filters.priorityValue}
-          onChange={this.onPriorityChange}
-        >
-          <option value={-1}>All</option>
-          <option value={0}>Low</option>
-          <option value={1}>Normal</option>
-          <option value={2}>High</option>
-        </select>
-        <select
-          value={this.props.filters.completed}
-          onChange={this.onStatusChange}
-        >
-          <option value="all">All</option>
-          <option value={true}>Completed</option>
-          <option value={false}>Pending</option>
-        </select>
-        <DateRangePicker
-          startDate={this.props.filters.startDate}
-          endDate={this.props.filters.endDate}
-          onDatesChange={this.onDatesChange}
-          focusedInput={this.state.calendarFocused}
-          onFocusChange={this.onFocusChange}
-          numberOfMonths={1}
-          isOutsideRange={() => false}
-          showClearDates={true}
-        />
+        <div className="content-container">
+          <div className="input-group">
+            <div className="input-group__item">
+              <input
+                type="text"
+                className="text-input"
+                value={this.props.filters.text}
+                onChange={this.onTextChange}
+                placeholder="Filter todos"
+              />
+            </div>
+            <div className="input-group__item">
+              <select
+                className="text-select"
+                value={this.props.filters.sortBy}
+                onChange={this.onSortChange}
+              >
+                <option value="date">Date</option>
+                <option value="priority">Priority</option>
+              </select>
+            </div>
+            <div className="input-group__item">
+              <select
+                className="text-select"
+                value={this.props.filters.priorityValue}
+                onChange={this.onPriorityChange}
+              >
+                <option value={-1}>All</option>
+                <option value={0}>Low</option>
+                <option value={1}>Normal</option>
+                <option value={2}>High</option>
+              </select>
+            </div>
+            <div className="input-group__item">
+              <select
+                className="text-select"
+                value={this.props.filters.completed}
+                onChange={this.onStatusChange}
+              >
+                <option value="all">All</option>
+                <option value={true}>Completed</option>
+                <option value={false}>Pending</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="content-container">
+          <div className="input-group">
+            <div className="input-group__item__range">
+              <DateRangePicker
+                startDate={this.props.filters.startDate}
+                endDate={this.props.filters.endDate}
+                onDatesChange={this.onDatesChange}
+                focusedInput={this.state.calendarFocused}
+                onFocusChange={this.onFocusChange}
+                numberOfMonths={1}
+                isOutsideRange={() => false}
+                showClearDates={true}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

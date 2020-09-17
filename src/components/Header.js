@@ -9,7 +9,7 @@ export const Header = ({ startLogout }) => (
       <div className="headerMenu">
         <h1 className="header__title">Todo app</h1>
         <NavLink
-          to="/"
+          to="/dashboard"
           activeClassName="is-active"
           exact={true}
           className="linkElement"

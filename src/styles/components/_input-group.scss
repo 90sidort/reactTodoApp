@@ -1,0 +1,39 @@
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 80%;
+  margin-bottom: $s-size;
+  .DateRangePicker {
+    text-align: center;
+  }
+  @media (min-width: $desktop-breakpoint) {
+    flex-direction: row;
+    margin-bottom: $l-size;
+  }
+  @media (max-width: $desktop-breakpoint) {
+    width: 100%;
+    input {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.input-group__item {
+  margin-bottom: $s-size;
+  margin-right: $s-size;
+  @media (min-width: $desktop-breakpoint) {
+    margin: 0 $l-size 0 0;
+  }
+}
+
+.input-group__item__range {
+  @extend .input-group__item;
+  width: 100%;
+  text-align: center;
+  margin-right: 0;
+  @media (max-width: $desktop-breakpoint) {
+    text-align: unset;
+  }
+}

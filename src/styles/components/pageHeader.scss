@@ -1,0 +1,25 @@
+.pageHeader {
+  background: $off-orange;
+  padding: $m-size 0;
+  margin-bottom: $l-size;
+}
+.summaryContent {
+  padding-left: 20px;
+  font-size: large;
+  span {
+    font-size: x-large;
+    font-weight: bold;
+  }
+}
+.pageHeaderTitle {
+  font-weight: 300;
+  margin: 0;
+  color: whitesmoke;
+  span {
+    font-weight: 700;
+  }
+}
+
+.spanSmaller {
+  font-size: medium !important;
+}
