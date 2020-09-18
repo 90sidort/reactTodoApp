@@ -62,6 +62,9 @@ export class TodoListFilters extends React.Component {
                 value={this.props.filters.sortBy}
                 onChange={this.onSortChange}
               >
+                <option value="placeholder" disabled>
+                  Sort by:
+                </option>
                 <option value="date">Date</option>
                 <option value="priority">Priority</option>
               </select>
@@ -72,6 +75,9 @@ export class TodoListFilters extends React.Component {
                 value={this.props.filters.priorityValue}
                 onChange={this.onPriorityChange}
               >
+                <option value="placeholder" disabled>
+                  Select priority:
+                </option>
                 <option value={-1}>All</option>
                 <option value={0}>Low</option>
                 <option value={1}>Normal</option>
@@ -84,6 +90,9 @@ export class TodoListFilters extends React.Component {
                 value={this.props.filters.completed}
                 onChange={this.onStatusChange}
               >
+                <option value="placeholder" disabled>
+                  Select status:
+                </option>
                 <option value="all">All</option>
                 <option value={true}>Completed</option>
                 <option value={false}>Pending</option>

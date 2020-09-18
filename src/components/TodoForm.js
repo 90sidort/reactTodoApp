@@ -36,7 +36,7 @@ class TodoForm extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     if (!this.state.title) {
-      this.setState({ error: "Please, provide title" });
+      this.setState({ error: "Please, provide meaningful title" });
     } else {
       this.setState({ error: "" });
       this.props.onSubmit({
@@ -58,46 +58,62 @@ class TodoForm extends React.Component {
   };
   render() {
     let buttonText;
+    let buttonColor;
     if (!this.state.completed) {
       buttonText = `Mark as done`;
+      buttonColor = "#2AB7CA";
     } else {
-      buttonText = `Mark as undone`;
+      buttonText = `Mark as pending`;
+      buttonColor = "#fe4a49";
     }
     return (
-      <div>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            value={this.state.title}
-            placeholder="Todo title"
-            onChange={this.onTitleChange}
-          />
-          <button onClick={this.onCompletedChange}>{buttonText}</button>
-          <select value={this.state.priority} onChange={this.onPriorityChange}>
-            <option value={-1} disabled>
-              Select priority:
-            </option>
-            <option value={0}>Low</option>
-            <option value={1}>Normal</option>
-            <option value={2}>High</option>
-          </select>
-          <SingleDatePicker
-            date={this.state.createdAt}
-            onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
-            onFocusChange={this.onFocusChange}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-          />
-          <textarea
-            placeholder="Provide description (optional)"
-            value={this.state.details}
-            onChange={this.onDetailsChange}
-          />
-          ]<button>Create todo</button>
-        </form>
-      </div>
+      <form onSubmit={this.onSubmit} className="form">
+        {this.state.error && <p className="form__error">{this.state.error}</p>}
+        <input
+          type="text"
+          autoFocus
+          className="text-input"
+          value={this.state.title}
+          placeholder="Todo title"
+          onChange={this.onTitleChange}
+        />
+        <button
+          onClick={this.onCompletedChange}
+          className="buttonLogout"
+          style={{ background: buttonColor }}
+        >
+          {buttonText}
+        </button>
+        <select
+          value={this.state.priority}
+          onChange={this.onPriorityChange}
+          className="text-select"
+        >
+          <option value={-1} disabled>
+            Select priority:
+          </option>
+          <option value={0}>Low</option>
+          <option value={1}>Normal</option>
+          <option value={2}>High</option>
+        </select>
+        <SingleDatePicker
+          date={this.state.createdAt}
+          onDateChange={this.onDateChange}
+          focused={this.state.calendarFocused}
+          onFocusChange={this.onFocusChange}
+          numberOfMonths={1}
+          isOutsideRange={() => false}
+        />
+        <textarea
+          className="text-textarea"
+          placeholder="Provide description (optional)"
+          value={this.state.details}
+          onChange={this.onDetailsChange}
+        />
+        <div>
+          <button className="buttonLogout">Save todo</button>
+        </div>
+      </form>
     );
   }
 }

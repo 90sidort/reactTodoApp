@@ -15,8 +15,21 @@ export class EditTodoPage extends React.Component {
   render() {
     return (
       <div>
-        <TodoForm todo={this.props.todo} onSubmit={this.onSubmit} />
-        <button onClick={this.onRemove}>Remove</button>
+        <div className="pageHeader">
+          <div className="summaryContent">
+            <h1 className="pageHeaderTitle">Edit todo</h1>
+          </div>
+        </div>
+        <div className="content-container">
+          <TodoForm todo={this.props.todo} onSubmit={this.onSubmit} />
+          <button
+            onClick={this.onRemove}
+            className="buttonLogout"
+            style={{ background: "#fe4a49" }}
+          >
+            Remove
+          </button>
+        </div>
       </div>
     );
   }
