@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const TodoListItem = ({
   id,
@@ -9,17 +10,40 @@ const TodoListItem = ({
   priority,
   createdAt,
 }) => {
-  const colour = completed ? "#ffcccb" : "#9ACD32";
+  let priorityName;
+  if (priority === 0) {
+    priorityName = "Low";
+  } else if (priority === 1) {
+    priorityName = "Regular";
+  } else {
+    priorityName = "High";
+  }
   return (
-    <div style={{ background: colour }}>
-      <Link to={`edit/${id}`}>
-        <h3>Description:{title}</h3>
-      </Link>
-      <p>Details:{details}</p>
-      <p>Priority: {priority}</p>
-      <p>Creation Time:{createdAt}</p>
-      <button disabled={true}>{completed ? "Done" : "Pending"}</button>
-    </div>
+    <Link to={`edit/${id}`} className="list_item">
+      <div>
+        <h3 className="list_item_description">{title}</h3>
+        {details.length > 0 && (
+          <p className="list_item_notes">
+            <small>{details}</small>
+          </p>
+        )}
+        <p className="list_item_notes">
+          <small>{priorityName}</small>
+        </p>
+        <span>{moment(createdAt).format("Do MMMM YYYY")}</span>
+      </div>
+      <button
+        disabled={true}
+        style={{
+          background: completed ? "#2ab7ca" : "#fe4a49",
+          borderRadius: "10px",
+          color: "white",
+          width: "100px",
+        }}
+      >
+        {completed ? "Completed" : "Pending"}
+      </button>
+    </Link>
   );
 };
 

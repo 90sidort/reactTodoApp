@@ -5,10 +5,14 @@ import selectTodos from "../selectors/todos";
 
 export const TodoList = (props) => {
   return (
-    <div>
-      <h1>Todo List</h1>
+    <div className="content-container list_body">
+      <div className="list-header">
+        <div className="show_for_mobile">Todos</div>
+        <div className="show_for_desktop">Todo</div>
+        <div className="show_for_desktop">Status</div>
+      </div>
       {props.todos.length === 0 ? (
-        <p>No todos to be done</p>
+        <p className="list_item_empty">No todos</p>
       ) : (
         props.todos.map((todo) => <TodoListItem key={todo.id} {...todo} />)
       )}
