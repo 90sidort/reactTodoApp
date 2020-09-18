@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { startLogin } from "../actions/auth";
+import { startLogin, startLogUser } from "../actions/auth";
 
-export const LoginPage = ({ startLogin }) => {
+export const LoginPage = ({ startLogin, startLogUser }) => {
   return (
     <div className="box-layout">
       <div className="box-layout__box">
@@ -11,6 +11,9 @@ export const LoginPage = ({ startLogin }) => {
         <button className="buttonBlue" onClick={startLogin}>
           Login with Google
         </button>
+        <button className="buttonBlue" onClick={startLogUser}>
+          Test user
+        </button>
       </div>
     </div>
   );
@@ -18,6 +21,7 @@ export const LoginPage = ({ startLogin }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   startLogin: () => dispatch(startLogin()),
+  startLogUser: () => dispatch(startLogUser()),
 });
 
 export default connect(undefined, mapDispatchToProps)(LoginPage);

@@ -20,6 +20,11 @@ exports[`Should correctly render LoginPage component 1`] = `
     >
       Login with Google
     </button>
+    <button
+      className="buttonBlue"
+    >
+      Test user
+    </button>
   </div>
 </div>
 `;

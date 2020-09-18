@@ -20,3 +20,11 @@ export const startLogout = () => {
     return firebase.auth().signOut();
   };
 };
+
+export const startLogUser = () => {
+  return () => {
+    return firebase
+      .auth()
+      .signInWithEmailAndPassword("test@test.com", "Celtic88");
+  };
+};
