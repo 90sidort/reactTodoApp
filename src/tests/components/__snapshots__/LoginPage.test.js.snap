@@ -1,9 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should correctly render LoginPage component 1`] = `
-<div>
-  <button>
-    Login with Google
-  </button>
+<div
+  className="box-layout"
+>
+  <div
+    className="box-layout__box"
+  >
+    <h1
+      className="box-layout__title"
+    >
+      Todo App
+    </h1>
+    <p>
+      It's time to get more organized!
+    </p>
+    <button
+      className="buttonBlue"
+    >
+      Login with Google
+    </button>
+  </div>
 </div>
 `;

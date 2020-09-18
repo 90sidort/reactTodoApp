@@ -2,23 +2,46 @@
 
 exports[`Should correctly render EditTodoPage 1`] = `
 <div>
-  <TodoForm
-    onSubmit={[Function]}
-    todo={
-      Object {
-        "completed": true,
-        "createdAt": 259200000,
-        "details": "These are first details",
-        "id": "1",
-        "priority": 0,
-        "title": "First todo",
-      }
-    }
-  />
-  <button
-    onClick={[Function]}
+  <div
+    className="pageHeader"
   >
-    Remove
-  </button>
+    <div
+      className="summaryContent"
+    >
+      <h1
+        className="pageHeaderTitle"
+      >
+        Edit todo
+      </h1>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <TodoForm
+      onSubmit={[Function]}
+      todo={
+        Object {
+          "completed": true,
+          "createdAt": 259200000,
+          "details": "These are first details",
+          "id": "1",
+          "priority": 0,
+          "title": "First todo",
+        }
+      }
+    />
+    <button
+      className="buttonLogout"
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#fe4a49",
+        }
+      }
+    >
+      Remove
+    </button>
+  </div>
 </div>
 `;

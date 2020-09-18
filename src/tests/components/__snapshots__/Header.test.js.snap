@@ -1,38 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should correctly render Header component 1`] = `
-<header>
-  <h1>
-    Todo app
-  </h1>
-  <NavLink
-    activeClassName="is-active"
-    ariaCurrent="true"
-    exact={true}
-    to="/"
+<header
+  className="header"
+>
+  <div
+    className="headerContent"
   >
-    Dashboard
-  </NavLink>
-  <NavLink
-    activeClassName="is-active"
-    ariaCurrent="true"
-    exact={true}
-    to="/create"
-  >
-    Create todo
-  </NavLink>
-  <NavLink
-    activeClassName="is-active"
-    ariaCurrent="true"
-    exact={true}
-    to="/help"
-  >
-    Help
-  </NavLink>
-  <button
-    onClick={[Function]}
-  >
-    Logout
-  </button>
+    <div
+      className="headerMenu"
+    >
+      <h1
+        className="header__title"
+      >
+        Todo app
+      </h1>
+      <NavLink
+        activeClassName="is-active"
+        ariaCurrent="true"
+        className="linkElement"
+        exact={true}
+        to="/dashboard"
+      >
+        Dashboard
+      </NavLink>
+      <NavLink
+        activeClassName="is-active"
+        ariaCurrent="true"
+        className="linkElement"
+        exact={true}
+        to="/create"
+      >
+        Create todo
+      </NavLink>
+      <NavLink
+        activeClassName="is-active"
+        ariaCurrent="true"
+        className="linkElement"
+        exact={true}
+        to="/help"
+      >
+        Help
+      </NavLink>
+    </div>
+    <button
+      className="buttonLogout"
+      onClick={[Function]}
+    >
+      Logout
+    </button>
+  </div>
 </header>
 `;

@@ -1,61 +1,127 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should render component correctly with multiple todos 1`] = `
-<div>
-  <p>
-    Viewing 
-    3
-     
-    todos
-    .
-  </p>
-  <p>
-    1
-     low, 
-    1
-     regular and 
-    1
-     high priotity
-  </p>
+<div
+  className="pageHeader"
+>
+  <div
+    className="summaryContent"
+  >
+    <p
+      className="pageHeaderTitle"
+    >
+      <span>
+        3
+      </span>
+       
+      todos
+      .
+       
+      <span
+        className="spanSmaller"
+      >
+        1
+      </span>
+       low,
+       
+      <span
+        className="spanSmaller"
+      >
+        1
+      </span>
+       regular and
+       
+      <span
+        className="spanSmaller"
+      >
+        1
+      </span>
+       high priority.
+    </p>
+  </div>
 </div>
 `;
 
 exports[`Should render component correctly with no todos 1`] = `
-<div>
-  <p>
-    Viewing 
-    0
-     
-    todos
-    .
-  </p>
-  <p>
-    0
-     low, 
-    0
-     regular and 
-    0
-     high priotity
-  </p>
+<div
+  className="pageHeader"
+>
+  <div
+    className="summaryContent"
+  >
+    <p
+      className="pageHeaderTitle"
+    >
+      <span>
+        0
+      </span>
+       
+      todos
+      .
+       
+      <span
+        className="spanSmaller"
+      >
+        0
+      </span>
+       low,
+       
+      <span
+        className="spanSmaller"
+      >
+        0
+      </span>
+       regular and
+       
+      <span
+        className="spanSmaller"
+      >
+        0
+      </span>
+       high priority.
+    </p>
+  </div>
 </div>
 `;
 
 exports[`Should render component correctly with one todo 1`] = `
-<div>
-  <p>
-    Viewing 
-    1
-     
-    todo
-    .
-  </p>
-  <p>
-    1
-     low, 
-    0
-     regular and 
-    0
-     high priotity
-  </p>
+<div
+  className="pageHeader"
+>
+  <div
+    className="summaryContent"
+  >
+    <p
+      className="pageHeaderTitle"
+    >
+      <span>
+        1
+      </span>
+       
+      todo
+      .
+       
+      <span
+        className="spanSmaller"
+      >
+        1
+      </span>
+       low,
+       
+      <span
+        className="spanSmaller"
+      >
+        0
+      </span>
+       regular and
+       
+      <span
+        className="spanSmaller"
+      >
+        0
+      </span>
+       high priority.
+    </p>
+  </div>
 </div>
 `;

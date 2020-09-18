@@ -1,10 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should correctly render TodoList component with todos 1`] = `
-<div>
-  <h1>
-    Todo List
-  </h1>
+<div
+  className="content-container list_body"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show_for_mobile"
+    >
+      Todos
+    </div>
+    <div
+      className="show_for_desktop"
+    >
+      Todo
+    </div>
+    <div
+      className="show_for_desktop"
+    >
+      Status
+    </div>
+  </div>
   <TodoListItem
     completed={true}
     createdAt={259200000}
@@ -36,12 +54,32 @@ exports[`Should correctly render TodoList component with todos 1`] = `
 `;
 
 exports[`Should correctly render TodoList component with todos 2`] = `
-<div>
-  <h1>
-    Todo List
-  </h1>
-  <p>
-    No todos to be done
+<div
+  className="content-container list_body"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show_for_mobile"
+    >
+      Todos
+    </div>
+    <div
+      className="show_for_desktop"
+    >
+      Todo
+    </div>
+    <div
+      className="show_for_desktop"
+    >
+      Status
+    </div>
+  </div>
+  <p
+    className="list_item_empty"
+  >
+    No todos
   </p>
 </div>
 `;
